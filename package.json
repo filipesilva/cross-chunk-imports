@@ -1,0 +1,40 @@
+{
+  "name": "cross-chunk-import",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "yarn --cwd src/angular-ve && yarn --cwd src/angular-ivy",
+    "test": "yarn test-simple && yarn test-angular-ve && yarn test-angular-ivy",
+    "test-simple": "yarn webpack-simple && yarn rollup-simple && yarn mixed-simple",
+    "webpack-simple": "rimraf dist/simple/webpack && webpack-cli --config webpack.config.js --env.app=simple",
+    "rollup-simple": "rimraf dist/simple/rollup && rollup --config rollup.config.js --environment app:simple",
+    "mixed-simple": "rimraf dist/simple/mixed && webpack-cli --config webpack.config.js --env.app=simple --env.mixed",
+    "test-angular-ve": "yarn compile-angular-ve && yarn webpack-angular-ve && yarn rollup-angular-ve && yarn mixed-angular-ve",
+    "compile-angular-ve": "yarn --cwd src/angular-ve ngc -p tsconfig.json",
+    "webpack-angular-ve": "rimraf dist/angular-ve/webpack && webpack-cli --config webpack.config.js --env.app=angular-ve",
+    "rollup-angular-ve": "rimraf dist/angular-ve/rollup && rollup --config rollup.config.js --environment app:angular-ve",
+    "mixed-angular-ve": "rimraf dist/angular-ve/mixed && webpack-cli --config webpack.config.js --env.app=angular-ve --env.mixed",
+    "test-angular-ivy": "yarn compile-angular-ivy && yarn webpack-angular-ivy && yarn rollup-angular-ivy && yarn mixed-angular-ve",
+    "compile-angular-ivy": "yarn --cwd src/angular-ivy ngc -p tsconfig.json",
+    "webpack-angular-ivy": "rimraf dist/angular-ivy/webpack && webpack-cli --config webpack.config.js --env.app=angular-ivy",
+    "rollup-angular-ivy": "rimraf dist/angular-ivy/rollup && rollup --config rollup.config.js --environment app:angular-ivy",
+    "mixed-angular-ivy": "rimraf dist/angular-ivy/mixed && webpack-cli --config webpack.config.js --env.app=angular-ivy --env.mixed",
+    "clean": "rimraf dist/**/*.js dist/**/*.js.map",
+    "sme": "source-map-explorer",
+    "ls": "ls -lhaR dist",
+    "serve": "lite-server"
+  },
+  "dependencies": {
+    "@angular-devkit/build-optimizer": "^0.800.0-beta.15",
+    "lite-server": "^2.4.0",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.10.0",
+    "rollup-plugin-node-resolve": "^4.2.3",
+    "rollup-plugin-terser": "^4.0.4",
+    "source-map-explorer": "^1.8.0",
+    "terser-webpack-plugin": "^1.2.3",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.0",
+    "zone.js": "^0.9.0"
+  }
+}

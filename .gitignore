@@ -1,0 +1,10 @@
+node_modules
+dist*
+yarn-error.log
+
+src/angular-ve/*.js
+src/angular-ve/*.js.map
+src/angular-ve/*.metadata.json
+src/angular-ve/*.ngsummary.json
+src/angular-ivy/*.js
+src/angular-ivy/*.js.map
