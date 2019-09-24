@@ -48,6 +48,7 @@ module.exports = env => ({
       {
         test: /\.js$/,
         loader: '@angular-devkit/build-optimizer/webpack-loader',
+        parser: { system: true },
         options: { sourceMap: true },
       }
     ]

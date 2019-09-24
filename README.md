@@ -18,15 +18,13 @@ The common module contains two exports (`usedExport` and `unusedExport`), but af
 
 Webpack retain `unusedExport`, but Rollup does not.
 
-## src/angular
+## src/angular-*
 
 A Angular application using lazy routes, setup to use both View Engine (current compiler) and Ivy (upcoming compiler). This application makes heavy use of cross-chunk imports.
 
-The VE version has a primary chunk of 292K with Webpack, and 378K with Rollup.
+The VE version has a primary chunk of 258K with Webpack, and 218K with Rollup.
 
-The Ivy version has a primary chunk of 343K with Webpack, and 292K with Rollup.
-
-Rollup seems to generate bigger bundles than Webpack for VE, but the reverse is true for Ivy. Source maps show the difference is in retained `@angular/core` code, where Rollup retains a lot more in VE (246K) than in Ivy (157K). It's not clear why this is so.
+The Ivy version has a primary chunk of 306K with Webpack, and 259K with Rollup.
 
 ## Mixed bundling
 
